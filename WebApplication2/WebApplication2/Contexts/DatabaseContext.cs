@@ -23,6 +23,35 @@ public class DatabaseContext: DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        modelBuilder.Entity<ProductCategorie>().HasKey(pc => new { pc.ProductId, pc.CategoryId });
+        
+        modelBuilder.Entity<ProductCategorie>()
+            .HasOne(pc => pc.Product)
+            .WithMany(p => p.ProductCategorie)
+            .HasForeignKey(pc => pc.ProductId);
+
+        modelBuilder.Entity<ProductCategorie>()
+            .HasOne(pc => pc.Categorie)
+            .WithMany(c => c.ProductCategories)
+            .HasForeignKey(pc => pc.CategoryId);
+        
+        modelBuilder.Entity<ShoppingCart>().HasKey(pc => new { pc.ProductId, pc.AccountId });
+        
+        modelBuilder.Entity<ShoppingCart>()
+            .HasOne(pc => pc.Product)
+            .WithMany(p => p.ShoppingCarts)
+            .HasForeignKey(pc => pc.ProductId);
+
+        modelBuilder.Entity<ShoppingCart>()
+            .HasOne(pc => pc.Account)
+            .WithMany(c => c.ShoppingCarts)
+            .HasForeignKey(pc => pc.AccountId);
+        
+        
+        
+        
+        
         var roles = new List<Role>
         {
             new Role

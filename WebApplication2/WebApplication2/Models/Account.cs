@@ -11,7 +11,7 @@ public class Account
     [Column("PK_account")]
     public int AccountId { get; set; }
     
-    [ForeignKey("Role")]
+    [ForeignKey("Roles")]
     [Column("FK_role")]
     public int RoleId { get; set; }
 
@@ -28,9 +28,9 @@ public class Account
     [Column("email")]
     [MaxLength(80)]
     public string Email { get; set; }
-    
-    [Column("phone")]
-    [MaxLength(9)]
-    
-    public string Phone { get; set; }
+
+    [Column("phone")] [MaxLength(9)] 
+    public string Phone { get; set; } = null;
+
+    public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; } = null;
 }

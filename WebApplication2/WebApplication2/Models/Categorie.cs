@@ -13,4 +13,6 @@ public class Categorie
     [Column("name")]
     [MaxLength(100)]
     public string Name { get; set; }
+
+    public virtual ICollection<ProductCategorie> ProductCategories { set; get; } = null;
 }

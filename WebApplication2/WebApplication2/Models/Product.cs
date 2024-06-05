@@ -28,4 +28,8 @@ public class Product
     [Column("depth")]
     [Precision(5,2)]
     public double Depth { get; set; }
+
+    public virtual ICollection<ProductCategorie> ProductCategorie { get; set; } = null;
+
+    public virtual ICollection<ShoppingCart> ShoppingCarts { set; get; } = null;
 }
