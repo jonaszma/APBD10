@@ -10,6 +10,8 @@ public class Role
     [Column("PK_role")]
     public int Role_Id { get; set; }
     
+    public virtual ICollection<Account> Accounts { set; get; } = null;
+    
     [Column("name")]
     [MaxLength(100)]
     public string Name { get; set; }

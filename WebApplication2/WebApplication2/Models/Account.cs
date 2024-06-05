@@ -11,7 +11,7 @@ public class Account
     [Column("PK_account")]
     public int AccountId { get; set; }
     
-    [ForeignKey("Roles")]
+    [ForeignKey("Role")]
     [Column("FK_role")]
     public int RoleId { get; set; }
 

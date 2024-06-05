@@ -49,7 +49,12 @@ public class DatabaseContext: DbContext
             .HasForeignKey(pc => pc.AccountId);
         
         
+        modelBuilder.Entity<Account>().HasKey(pc => new {  pc.AccountId });
         
+        modelBuilder.Entity<Account>()
+            .HasOne(pc => pc.Role)
+            .WithMany(p => p.Accounts)
+            .HasForeignKey(pc => pc.RoleId);
         
         
         var roles = new List<Role>
